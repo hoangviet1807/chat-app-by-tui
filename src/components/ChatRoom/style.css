@@ -1,0 +1,71 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 56px;
+    padding: 0 16px;
+    align-items: center;
+    border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.sent {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.received {
+    display: flex;
+    align-items: center;
+}
+
+.sendText {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.receiverText {
+    display: flex;
+    align-items: center;
+}
+
+.textSend {
+    float: right;
+    margin-right: 12px;
+    padding-top: 5px;
+
+    /* background: #EEE;
+    border: 1px solid #cccccc;
+    border-radius:14px 14px 14px 0 */
+
+}
+.textReceived {
+    margin-left: 10px;
+    padding-top: 5px;
+
+}
+
+
+.inputRounded .MuiOutlinedInput-root{
+    border-radius: 10px;
+    color: white;
+    border: 1px solid white;
+    background:#4D7FC4;
+
+   }
+ 
+.listRoom{
+    width: fit-content;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left:10px;
+    transition: 0.2s;
+}
+
+.listRoom:hover {
+    background: rgba(46, 38, 38, 0.363);
+    box-shadow: 0 5px 35px 0px rgba(233, 231, 231, 0.1);
+}
+
+/* className={`msg ${uid === auth.currentUser.uid ? 'sent' : 'received'}`} */
