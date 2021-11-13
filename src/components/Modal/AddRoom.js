@@ -1,7 +1,6 @@
 import { Button, Modal, TextField } from "@material-ui/core";
 import React, { useContext } from "react";
 import Backdrop from "@material-ui/core/Backdrop";
-import Fade from "@material-ui/core/Fade";
 import { useState } from "react";
 import { AppContext } from "../../context/appProvider";
 import { addDocument } from "../../firebase/services";

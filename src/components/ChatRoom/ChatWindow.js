@@ -2,14 +2,13 @@ import { Avatar, Button, TextField } from "@material-ui/core";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { Alert, AvatarGroup } from "@material-ui/lab";
 import { Tooltip } from "@material-ui/core";
-import image from "../../assets/han.jpg";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import Mess from "./Mess";
 import { AppContext } from "../../context/appProvider";
 import { AuthContext } from "../../context/authProvider";
 import { addDocument } from "../../firebase/services";
 import useFirestore from "../../hooks/useStoreFirebase";
-import debounce from "lodash/debounce";
+
 export default function ChatWindow() {
   const { selectedRoom, members, setIsInviteMemberVisible } =
     useContext(AppContext);
@@ -17,7 +16,6 @@ export default function ChatWindow() {
     user: { uid, photoURL, displayName },
   } = useContext(AuthContext);
   const [inputValue, setInputValue] = useState("");
-  const [isTyping, setIstyping] = useState(false);
   const inputRef = useRef(null);
   const messageListRef = useRef(null);
   const handleSubmit = () => {
@@ -53,10 +51,6 @@ export default function ChatWindow() {
         messageListRef.current.scrollHeight + 50;
     }
   }, [messages]);
-
-  const handleIsTyping = debounce(function () {
-    setIstyping(false);
-  }, 2000);
 
   return (
     <div>
@@ -137,8 +131,6 @@ export default function ChatWindow() {
                   placeholder="Soạn tin nhắn..."
                   onChange={(e) => {
                     setInputValue(e.target.value);
-                    setIstyping(true);
-                    handleIsTyping();
                   }}
                   onKeyPress={(e) => {
                     if (e.key === "Enter") {

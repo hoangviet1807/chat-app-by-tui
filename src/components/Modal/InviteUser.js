@@ -1,19 +1,12 @@
 import {
-  Avatar,
   Button,
-  MenuItem,
   Modal,
-  Select,
   TextField,
 } from "@material-ui/core";
 import React, { useContext, useEffect, useState } from "react";
 import Backdrop from "@material-ui/core/Backdrop";
 import { AppContext } from "../../context/appProvider";
-import { addDocument } from "../../firebase/services";
-import { AuthContext } from "../../context/authProvider";
 import { makeStyles } from "@material-ui/core/styles";
-import ClearIcon from "@material-ui/icons/Clear";
-import { debounce } from "lodash";
 import { db } from "../../firebase/firebase";
 import { Autocomplete } from "@material-ui/lab";
 
@@ -44,12 +37,11 @@ export default function InviteUser({}) {
   const ref = db.collection("users");
   const [schools, setSchools] = useState([]);
   const [select, setSelect] = useState([]);
-  const [loading, setLoading] = useState(false);
+
   const [value, setValue] = useState("");
 
   //REALTIME GET FUNCTION
   function getSchools() {
-    setLoading(true);
     ref
       .where("keywords", "array-contains", value.toLowerCase()) // needs index
       .orderBy("displayName")
@@ -60,7 +52,6 @@ export default function InviteUser({}) {
           items.push(doc.data());
         });
         setSchools(items);
-        setLoading(false);
       });
   }
 

@@ -1,27 +1,14 @@
 import React, { useContext, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Avatar, Button, TextField } from "@material-ui/core";
+// import { makeStyles } from "@material-ui/core/styles";
+import {  Button } from "@material-ui/core";
 import { AppContext } from "../../context/appProvider";
-import SearchIcon from "@material-ui/icons/Search";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
-import image from "../../assets/han.jpg";
 import "./style.css";
-import { Autocomplete } from "@material-ui/lab";
 import { useState } from "react";
 import { db } from "../../firebase/firebase";
 import { AuthContext } from "../../context/authProvider";
 import { addDocument } from "../../firebase/services";
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    maxWidth: 360,
-    backgroundColor: "white",
-    color: "black",
-  },
-  nested: {
-    paddingLeft: theme.spacing(4),
-  },
-}));
+
 export default function RoomList() {
   const ref = db.collection("users");
   const {
@@ -32,7 +19,6 @@ export default function RoomList() {
   const [value, setValue] = useState("");
   const [uidSelect, setUidSelect] = useState([]);
   const [options, setOption] = useState([]);
-  const [open, setOpen] = React.useState(true);
   const handeAddRoom = () => {
     setIsAddRoomVisible(true);
   };

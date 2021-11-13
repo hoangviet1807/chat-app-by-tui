@@ -1,5 +1,5 @@
 import { Grid } from "@material-ui/core";
-import React, { useRef } from "react";
+import React from "react";
 
 import SideBar from "./SideBar";
 import ChatWindow from "./ChatWindow";
